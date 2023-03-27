@@ -1,0 +1,9 @@
+export const COLOR_PALETTE = {
+  RED: "#A86269",
+  BROWN: "#B6998F",
+  CREAM: "#E4D6BA",
+  YELLOW: "#DABF9C",
+  BLUE: "#468998",
+  DARKBLUE: "#27416F",
+  GREEN: "#61785B",
+};
