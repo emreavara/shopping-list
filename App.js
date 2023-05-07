@@ -7,6 +7,8 @@ import ProductList from "./screens/ProductList";
 import ShoppingList from "./screens/ShoppingList";
 import { COLOR_PALETTE } from "./style/Colors";
 
+// TODO : Add i18 translations
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (

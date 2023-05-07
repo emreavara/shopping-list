@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,9 +13,15 @@ import ProductItem from "../components/ProductItem";
 import { COLOR_PALETTE } from "../style/Colors";
 import NewProductInput from "../components/NewProductInput";
 function ProductList({ route, navigation }) {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   navigation.setOptions({
     headerRight: () => (
-      <Button title="Ekle" color="white" onPress={() => console.log("hii")} />
+      <Button
+        title="ADD"
+        color="black"
+        onPress={() => setIsModalVisible(!isModalVisible)}
+      />
     ),
   });
   return (
@@ -25,8 +31,11 @@ function ProductList({ route, navigation }) {
           return <ProductItem key={index} product={product} />;
         })}
       </View>
-      <View style={{ height: 100, marginBottom: 40 }}>
-        <NewProductInput />
+      <View>
+        <NewProductInput
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
       </View>
     </View>
   );

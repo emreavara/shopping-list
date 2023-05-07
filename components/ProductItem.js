@@ -29,7 +29,7 @@ function ProductItem({ product }) {
 export default ProductItem;
 const styles = StyleSheet.create({
   outerContainer: {
-    height: "10%",
+    height: "5%",
     margin: 8,
   },
   pressableButton: {
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   innerContainer: {
     flex: 1,
-    padding: 8,
+    padding: 2,
     paddingLeft: 24,
     borderRadius: 12,
     flexDirection: "row",
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_PALETTE.GREEN,
   },
   productNameText: {
-    fontSize: 24,
+    fontSize: 18,
     color: COLOR_PALETTE.CREAM,
   },
 });
