@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 import {
   View,
   TextInput,
@@ -7,11 +7,45 @@ import {
   TouchableOpacity,
   Modal,
 } from "react-native";
+
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToProductList,
+  deleteFromProductList,
+  getProductList,
+} from "../redux/actions/productListActions";
+
+import ShortUniqueId from "short-unique-id";
+
 import { COLOR_PALETTE } from "../style/Colors";
 import { TRANSLATIONS_TR } from "../translations/tr-Tr/translations";
 import CustomButton from "./common/CustomButton";
+import ProductItem from "./ProductItem";
 
 function NewProductInput({ isModalVisible, setIsModalVisible }) {
+  const uid = new ShortUniqueId({ length: 6 });
+  const [product, setProduct] = useState({
+    id: uid(),
+    name: "",
+    amount: "",
+  });
+
+  const dispatch = useDispatch();
+
+  const productList = useSelector((store) => store.productListReducer);
+
+  const handleAddProduct = () => {
+    dispatch(addToProductList(product));
+    setProduct({
+      id: uid(),
+      name: "",
+      amount: "",
+    });
+  };
+
+  console.log("################# \n PRODUCT LIST: ", productList);
+  console.log(product);
+
   return (
     <Modal
       animationType="slide"
@@ -32,14 +66,18 @@ function NewProductInput({ isModalVisible, setIsModalVisible }) {
             <TextInput
               placeholder="Product Name"
               style={styles.productName}
-              onChangeText={(text) => {
-                productNameRef.current = text;
-              }}
+              onChangeText={(name) => setProduct({ ...product, name: name })}
             />
-            <TextInput placeholder="Amount" style={styles.productName} />
+            <TextInput
+              placeholder="Amount"
+              style={styles.productName}
+              onChangeText={(amount) =>
+                setProduct({ ...product, amount: amount })
+              }
+            />
           </View>
           <View style={styles.buttonContainer}>
-            <CustomButton onPress={() => console.log("Added")} title="Add" />
+            <CustomButton onPress={handleAddProduct} title="Add" />
           </View>
         </View>
       </TouchableOpacity>

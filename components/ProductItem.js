@@ -12,14 +12,10 @@ function ProductItem({ product }) {
           styles.pressableButton,
           pressed && styles.buttonPressed,
         ]}
+        onPress={() => console.log("Pressed")}
       >
         <View style={styles.innerContainer}>
-          <View style={{ flex: 4 }}>
-            <Text style={styles.productNameText}>{product.name}</Text>
-          </View>
-          {/* <View style={{ flex: 1 }}>
-            <Text style={styles.productNameText}>Add</Text>
-          </View> */}
+          <Text style={styles.productNameText}> {product.name}</Text>
         </View>
       </Pressable>
     </View>
@@ -30,7 +26,7 @@ export default ProductItem;
 const styles = StyleSheet.create({
   outerContainer: {
     height: "5%",
-    margin: 8,
+    margin: 3,
   },
   pressableButton: {
     flex: 1,

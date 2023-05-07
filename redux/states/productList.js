@@ -1,7 +1,6 @@
-export const PRODUCTS = [
+export const productList = [
   {
     id: 1,
     name: "Milk",
-    amount: 1,
   },
 ];

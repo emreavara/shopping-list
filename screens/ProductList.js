@@ -7,6 +7,9 @@ import {
   Platform,
   Touchable,
   TouchableOpacity,
+  SafeAreaView,
+  ScrollableView,
+  FlatList,
 } from "react-native";
 import { PRODUCTS } from "../data/Products";
 import ProductItem from "../components/ProductItem";
@@ -26,11 +29,13 @@ function ProductList({ route, navigation }) {
   });
   return (
     <View style={{ flex: 1 }}>
-      <View style={styles.productListContainer}>
-        {PRODUCTS.map((product, index) => {
-          return <ProductItem key={index} product={product} />;
-        })}
-      </View>
+      <SafeAreaView style={styles.productListContainer}>
+        <FlatList
+          data={PRODUCTS}
+          renderItem={({ item }) => <ProductItem product={item} />}
+          keyExtractor={(product) => product.id}
+        />
+      </SafeAreaView>
       <View>
         <NewProductInput
           isModalVisible={isModalVisible}
